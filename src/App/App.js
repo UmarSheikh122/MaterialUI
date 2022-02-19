@@ -1,20 +1,48 @@
-import { makeStyles } from "@material-ui/core";
+import { createTheme, CssBaseline, makeStyles, ThemeProvider } from "@material-ui/core";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import Header from "../Components/Header";
+import PageHeader from "../Components/PageHeader";
 import SideMenu from "../Components/SideMenu";
-import '../index.css'
+import "../index.css";
 
-const useStyles = makeStyles({
-  mainApp: {
-    paddingLeft: '320px',
-    width: '100%'
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#333996',
+      light: "3c44b126",
+    },
+    secondary: {
+      main: "#f83245",
+      light: "#f8324526"
+    },
+    background: {
+      default: "#f4f5fd",
+    }
   }
 })
+const useStyles = makeStyles({
+  mainApp: {
+    paddingLeft: "320px",
+    width: "100%",
+  },
+});
 function App() {
   const classes = useStyles();
   return (
-    <>
-      <SideMenu/>
-      <div className={classes.mainApp}>Here we go</div>
-    </>
+    <ThemeProvider theme={theme}>
+      <SideMenu />
+      <div className={classes.mainApp}>
+        <Header />
+        <PageHeader 
+        title = "Page Header"
+        subTitle = "Description"
+        icon = {<PeopleAltIcon/>}
+        />
+      </div>
+      {/* CssBaseline to provide common css rules like box-sizing etc */}
+      <CssBaseline/>
+    </ThemeProvider>
   );
 }
 

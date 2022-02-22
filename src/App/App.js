@@ -1,7 +1,6 @@
 import { createTheme, CssBaseline, makeStyles, ThemeProvider } from "@material-ui/core";
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import Header from "../Components/Header";
-import PageHeader from "../Components/PageHeader";
+import Employees from "../Components/Pages/Employees/Employees";
 import SideMenu from "../Components/SideMenu";
 import "../index.css";
 
@@ -34,11 +33,7 @@ function App() {
       <SideMenu />
       <div className={classes.mainApp}>
         <Header />
-        <PageHeader 
-        title = "Page Header"
-        subTitle = "Description"
-        icon = {<PeopleAltIcon/>}
-        />
+        <Employees/>
       </div>
       {/* CssBaseline to provide common css rules like box-sizing etc */}
       <CssBaseline/>

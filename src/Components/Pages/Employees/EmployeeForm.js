@@ -2,7 +2,9 @@ import { Grid} from '@material-ui/core'
 import React from 'react'
 import InputControl from '../../controls/InputControl'
 import RadioControl from '../../controls/RadioControl'
+import SelectControl from '../../controls/SelectControl'
 import Form, { UseForm } from './useForm'
+import * as EmployeeServices from '../../../Services.js/EmployeeService'
 
 
 const initialFieldValues = {
@@ -12,6 +14,8 @@ const initialFieldValues = {
     hireDate: new Date(),
     isPermanent: false,
     departmentId: '',
+    city: '',
+    mobile: '',
     gender: 'male'
 }
 const gendersItem = [
@@ -38,6 +42,18 @@ const EmployeeForm = () => {
             name="email"
             onChange={handleChangeInput}
             />
+             <InputControl
+            label = 'City'
+            value={values.city}
+            name="city"
+            onChange={handleChangeInput}
+            />
+             <InputControl
+            label = 'Phone'
+            value={values.phone}
+            name="phone"
+            onChange={handleChangeInput}
+            />
         </Grid>
         <Grid item xs={6}>
         
@@ -48,7 +64,13 @@ const EmployeeForm = () => {
             onChange = {handleChangeInput}
             genderItems = {gendersItem}
             />
-        
+            <SelectControl
+            label = "Department"
+            name = "departmentId"
+            value = {values.departmentId}
+            onChange = {handleChangeInput}
+            options = {EmployeeServices.getDepartmentCollecton()}
+            />
         </Grid>
     </Grid>
     </Form>

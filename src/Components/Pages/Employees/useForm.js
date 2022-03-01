@@ -15,6 +15,7 @@ export const UseForm = (initialState) => {
   const [values, setValues] = useState(initialState)
   const handleChangeInput = (e) => {
       const { name, value} = e.target;
+      console.log('name, value: ', name, value);
       setValues({
           ...values,
           [name]: value
@@ -29,6 +30,8 @@ export const UseForm = (initialState) => {
 
 
 const Form = (props) => {
+  console.log('props: ', props, "---------------"
+  ,props.children);
   const classes = useStyles();
   return (
     <form className={classes.root}>{props.children}</form>
